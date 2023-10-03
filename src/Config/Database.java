@@ -7,7 +7,7 @@ public class Database {
     private static Connection db;
     static {
         try {
-            String Url = "jdbc:postgresql://localhost:5432/easybank";
+            String Url = "jdbc:postgresql://localhost:5432/easybank_brief2";
             String Username = "postgres";
             String Password = "simokandirou1234@";
             Class.forName("org.postgresql.Driver");
