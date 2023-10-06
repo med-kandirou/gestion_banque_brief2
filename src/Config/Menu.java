@@ -290,7 +290,7 @@ public class Menu {
                                 vAgence.rechercherParCode();
                                 break;
                             case 5:
-                                vEmploye.chercherEmploye();
+                                vAgence.rechercherParAdresse();
                                 break;
                             case 6:
                                 vEmploye.chercherParAtt();

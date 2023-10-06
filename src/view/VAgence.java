@@ -52,4 +52,14 @@ public class VAgence {
                 () -> System.out.println("CETTE AGENCE N'EXISTE PAS")
         );
     }
+
+    public void rechercherParAdresse(){
+        System.out.print("adresse :");
+        String adresse=sc.nextLine();
+        Optional<Agence>opt=agenceService.rechercheParAdresse(adresse);
+        opt.ifPresentOrElse(
+                valeur -> System.out.print(valeur.getCode()+" "+valeur.getNom()+" "+valeur.getAdresse()+" "+valeur.getTelephone()+"\n"),
+                () -> System.out.println("CETTE AGENCE N'EXISTE PAS")
+        );
+    }
 }

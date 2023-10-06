@@ -85,4 +85,27 @@ public class ImpAgence implements IAgence {
     public List<Agence> afficher() {
         return null;
     }
+
+    @Override
+    public Optional<Agence> cherchebyAdresse(String adresse) {
+        Agence agence = new Agence();
+        try {
+            String selectSql = "SELECT * FROM agence WHERE adresse = '" + adresse + "'";
+            PreparedStatement preparedStatement = cnx.prepareStatement(selectSql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                agence.setCode(resultSet.getInt("code"));
+                agence.setNom(resultSet.getString("nom"));
+                agence.setTelephone(resultSet.getString("telephone"));
+                agence.setAdresse(resultSet.getString("adresse"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+            return Optional.ofNullable(agence);
+        }
+        catch (SQLException e){
+            System.out.print(e.getMessage());
+        }
+        return Optional.empty();
+    }
 }
