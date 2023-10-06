@@ -267,7 +267,7 @@ public class Menu {
                         System.out.println("Veuillez choisir une option: ");
                         System.out.println("1. Ajouter une Agence");
                         System.out.println("2. Modifier un employé");
-                        System.out.println("3. Supprimer un employé");
+                        System.out.println("3. Supprimer unae agence");
                         System.out.println("4. Chercher une agence par code");
                         System.out.println("5. Chercher une agence par adresse");
                         System.out.println("6. afficher la liste des contact");
@@ -284,7 +284,7 @@ public class Menu {
                                 System.out.println("Modifier un employé");
                                 break;
                             case 3:
-                                vEmploye.supprierEmploye();
+                                vAgence.supprimer();
                                 break;
                             case 4:
                                 vEmploye.afficherListe();
