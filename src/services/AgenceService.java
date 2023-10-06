@@ -3,6 +3,8 @@ package services;
 import DAO.ImpAgence;
 import DAO.ImpOperation;
 import DTO.Agence;
+
+import java.util.HashMap;
 import java.util.Optional;
 
 public class AgenceService {
@@ -47,6 +49,11 @@ public class AgenceService {
         }else {
             return Optional.empty();
         }
+    }
+
+    public HashMap<String,String> AfficheContact(){
+        HashMap<String,String> contacts=impAgence.afficherContact();
+        return contacts;
     }
 
 

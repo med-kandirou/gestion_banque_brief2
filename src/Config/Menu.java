@@ -293,10 +293,10 @@ public class Menu {
                                 vAgence.rechercherParAdresse();
                                 break;
                             case 6:
-                                vEmploye.chercherParAtt();
+                                vAgence.afficheContacts();
                                 break;
                             case 7:
-                                System.out.println("Retour");
+                                //vAgence.afficheContacts();
                                 break;
                             default:
                                 System.out.println("Choix invalide");

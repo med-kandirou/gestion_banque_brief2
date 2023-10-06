@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ImpAgence implements IAgence {
@@ -107,5 +109,25 @@ public class ImpAgence implements IAgence {
             System.out.print(e.getMessage());
         }
         return Optional.empty();
+    }
+
+    @Override
+    public HashMap<String, String> afficherContact() {
+        HashMap<String,String> contacts= new HashMap<>();
+        try {
+            String selectSql = "SELECT adresse,telephone FROM agence";
+            PreparedStatement preparedStatement = cnx.prepareStatement(selectSql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                contacts.put(resultSet.getString("adresse"),resultSet.getString("telephone"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+            return contacts;
+        }
+        catch (SQLException e){
+            System.out.print(e.getMessage());
+        }
+        return contacts;
     }
 }

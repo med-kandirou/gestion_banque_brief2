@@ -8,6 +8,7 @@ import services.AgenceService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -61,5 +62,12 @@ public class VAgence {
                 valeur -> System.out.print(valeur.getCode()+" "+valeur.getNom()+" "+valeur.getAdresse()+" "+valeur.getTelephone()+"\n"),
                 () -> System.out.println("CETTE AGENCE N'EXISTE PAS")
         );
+    }
+
+    public void afficheContacts(){
+        HashMap<String, String> contacts=agenceService.AfficheContact();
+        contacts.forEach((key, value) -> {
+            System.out.println("Adresse: " + key + ", Telephone: " + value);
+        });
     }
 }
