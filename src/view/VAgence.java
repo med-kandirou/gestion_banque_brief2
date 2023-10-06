@@ -8,6 +8,7 @@ import services.AgenceService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class VAgence {
@@ -40,5 +41,15 @@ public class VAgence {
         else {
             System.out.printf("CETTE AGENCE AVEC CE CODE N'EXISTE PAS \n");
         }
+    }
+
+    public void rechercherParCode(){
+        System.out.print("code :");
+        int code=sc.nextInt();
+        Optional<Agence>opt=agenceService.rechercheParCode(code);
+        opt.ifPresentOrElse(
+                valeur -> System.out.print(valeur.getCode()+" "+valeur.getNom()+" "+valeur.getAdresse()+" "+valeur.getTelephone()+"\n"),
+                () -> System.out.println("CETTE AGENCE N'EXISTE PAS")
+        );
     }
 }

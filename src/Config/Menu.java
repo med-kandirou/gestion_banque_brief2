@@ -287,7 +287,7 @@ public class Menu {
                                 vAgence.supprimer();
                                 break;
                             case 4:
-                                vEmploye.afficherListe();
+                                vAgence.rechercherParCode();
                                 break;
                             case 5:
                                 vEmploye.chercherEmploye();

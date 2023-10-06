@@ -63,7 +63,7 @@ public class ImpAgence implements IAgence {
     public Optional<Agence> cherchebyId(Integer id) {
         Agence agence = new Agence();
         try {
-            String selectSql = "SELECT * FROM agence WHERE code like '" + id + "'";
+            String selectSql = "SELECT * FROM agence WHERE code = '" + id + "'";
             PreparedStatement preparedStatement = cnx.prepareStatement(selectSql);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {

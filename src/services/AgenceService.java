@@ -31,5 +31,15 @@ public class AgenceService {
     }
 
 
+    public Optional<Agence> rechercheParCode(int code){
+        Optional<Agence> optagence=impAgence.cherchebyId(code);
+        if(optagence.isPresent()){
+            return optagence;
+        }else {
+            return Optional.empty();
+        }
+    }
+
+
 
 }
