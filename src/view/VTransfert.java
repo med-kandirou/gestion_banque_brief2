@@ -33,4 +33,16 @@ public class VTransfert {
         });
 
     }
+
+    public void supprimer(){
+        System.out.print("code :");
+        int code=sc.nextInt();
+        boolean deleted=service.supprimer(code);
+        if(deleted){
+            System.out.printf("TRANSFERT SUPPRIME AVEC SUCCÈS \n");
+        }
+        else {
+            System.out.printf("CETTE TRANSFERT AVEC CE CODE N'EXISTE PAS \n");
+        }
+    }
 }

@@ -6,6 +6,7 @@ import Interfaces.ITransfert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class ImpTransfert implements ITransfert {
@@ -33,6 +34,19 @@ public class ImpTransfert implements ITransfert {
 
     @Override
     public int supprimer(int code) {
+        try {
+            String deleteSql = "DELETE FROM transactions WHERE numero = ?";
+            PreparedStatement preparedStatement = cnx.prepareStatement(deleteSql);
+            preparedStatement.setInt(1, code);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                return 1;
+            }
+            preparedStatement.close();
+        }
+        catch (SQLException e){
+            System.out.print(e.getMessage());
+        }
         return 0;
     }
 }

@@ -18,4 +18,13 @@ public class TransfertService {
         Optional<Transfert> optran= imptransfert.ajouter(transfert);
         return optran;
     }
+
+
+    public boolean supprimer(int code){
+        int deleted=imptransfert.supprimer(code);
+        if(deleted==1){
+            return true;
+        }
+        return false;
+    }
 }

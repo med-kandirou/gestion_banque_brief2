@@ -346,10 +346,10 @@ public class Menu {
                                 vTransfert.ajouter();
                                 break;
                             case 2:
-                                System.out.println("Modifier un employé");
+                                vTransfert.supprimer();
                                 break;
                             case 3:
-                                vEmpAgence.statistique();
+                                //
                                 break;
                             default:
                                 System.out.println("Choix invalide");
