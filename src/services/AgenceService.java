@@ -56,6 +56,11 @@ public class AgenceService {
         return contacts;
     }
 
+    public Optional<Agence> update(Agence agence){
+        Optional<Agence> ag=impAgence.update(agence);
+        return ag;
+    }
+
 
 
 }

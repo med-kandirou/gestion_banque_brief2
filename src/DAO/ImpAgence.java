@@ -58,6 +58,23 @@ public class ImpAgence implements IAgence {
 
     @Override
     public Optional<Agence> update(Agence agence) {
+        try {
+            String insertSql = "update agence set nom= ? , adresse= ? ,telephone=? where code= ?";
+            // Create a PreparedStatement
+            PreparedStatement preparedStatement = cnx.prepareStatement(insertSql);
+            preparedStatement.setString(1, agence.getNom());
+            preparedStatement.setString(2, agence.getAdresse());
+            preparedStatement.setString(3,agence.getTelephone());
+            preparedStatement.setInt(4,agence.getCode());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                return Optional.ofNullable(agence);
+            }
+            preparedStatement.close();
+        }
+        catch (Exception e){
+            System.out.print(e.getMessage());
+        }
         return Optional.empty();
     }
 
@@ -130,4 +147,6 @@ public class ImpAgence implements IAgence {
         }
         return contacts;
     }
+
+
 }

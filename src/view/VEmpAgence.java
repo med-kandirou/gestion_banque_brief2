@@ -39,4 +39,6 @@ public class VEmpAgence {
             System.out.printf(val.getEmploye().getNom()+" "+val.getEmploye().getPrenom()+" "+val.getAgence().getNom()+" "+val.getAgence().getAdresse()+" "+val.getAgence().getTelephone()+" "+val.getDatechangement()+"\n");
         });
     }
+
+
 }

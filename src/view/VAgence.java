@@ -3,14 +3,12 @@ package view;
 import DAO.ImpAgence;
 import DTO.Agence;
 import DTO.Client;
+import DTO.Empagence;
 import services.AgenceService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class VAgence {
     ImpAgence impag = new ImpAgence();
@@ -68,6 +66,36 @@ public class VAgence {
         HashMap<String, String> contacts=agenceService.AfficheContact();
         contacts.forEach((key, value) -> {
             System.out.println("Adresse: " + key + ", Telephone: " + value);
+        });
+    }
+
+    public void update(){
+        System.out.print("code :");
+        int code=sc.nextInt();
+        Optional<Agence>opt=agenceService.rechercheParCode(code);
+        opt.ifPresentOrElse(
+                valeur -> System.out.print(valeur.getCode()+" "+valeur.getNom()+" "+valeur.getAdresse()+" "+valeur.getTelephone()+"\n"),
+                () -> System.out.println("CETTE AGENCE N'EXISTE PAS")
+        );
+        Agence ag= opt.get();
+        System.out.print("Modifier le nom d'agence (enter pour laisser la valeur) :");
+        String nom=sc.next();
+        if(!nom.isEmpty()){
+            ag.setNom(nom);
+        }
+        System.out.print("Modifier l'adresse d'agence (enter pour laisser la valeur) :");
+        String adresse=sc.next();
+        if(!adresse.isEmpty()){
+            ag.setAdresse(adresse);
+        }
+        System.out.print("Modifier le tele d'agence (enter pour laisser la valeur) :");
+        String tele=sc.next();
+        if(!tele.isEmpty()){
+            ag.setAdresse(tele);
+        }
+        Optional<Agence> agence= agenceService.update(ag);
+        agence.ifPresent(val->{
+            System.out.printf("L'AGENCE A ETE MODIFIE");
         });
     }
 }

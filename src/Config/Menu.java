@@ -284,7 +284,7 @@ public class Menu {
                                 vAgence.ajouter();
                                 break;
                             case 2:
-                                System.out.println("Modifier un employé");
+                                vAgence.update();
                                 break;
                             case 3:
                                 vAgence.supprimer();
