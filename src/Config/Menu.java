@@ -266,6 +266,7 @@ public class Menu {
                     quitter=true;
                     break;
                 default:
+
                     System.out.println("Choix invalide");
                     break;
             }
