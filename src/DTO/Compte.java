@@ -14,6 +14,16 @@ public class Compte {
 
     protected Employe employe;
 
+    protected Agence agence;
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+
     public Compte() {}
 
     public Compte(Compte compte) {
@@ -22,6 +32,7 @@ public class Compte {
         this.etat = compte.getEtat();
         this.client = compte.getClient();
         this.employe = compte.getEmploye();
+        this.agence = compte.getAgence();
     }
 
     public String getCode() {

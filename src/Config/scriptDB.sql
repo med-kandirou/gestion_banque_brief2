@@ -89,3 +89,6 @@ create table affectation(
 
 ALTER TABLE empagence
     ADD date_affectation DATE DEFAULT CURRENT_DATE ;
+
+ALTER TABLE compte
+    ALTER COLUMN dateCreation SET DEFAULT CURRENT_DATE;

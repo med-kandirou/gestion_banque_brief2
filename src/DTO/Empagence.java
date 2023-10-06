@@ -1,5 +1,6 @@
 package DTO;
 
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @RequiredArgsConstructor
 public class Empagence {
 
-    private Date datechangement;
+    private LocalDate datechangement;
     @NonNull private Employe employe;
     @NonNull private Agence agence;
 
