@@ -12,6 +12,8 @@ public class Menu {
     VAffectation vAffectation =new VAffectation();
     VOperation vOperation =new VOperation();
     VAgence vAgence =new VAgence();
+
+    VEmpAgence vEmpAgence =new VEmpAgence();
     public void menu(){
         boolean quitter=false;
         System.out.printf("Welcome to EasyBank!");
@@ -23,7 +25,8 @@ public class Menu {
             System.out.println("4. Administration des Opérations");
             System.out.println("5. Administration des missions");
             System.out.println("6. Administration des agence");
-            System.out.println("7. Quitter");
+            System.out.println("7. Administration des agence employes");
+            System.out.println("8. Quitter");
             System.out.println("Votre choix: ");
             //get the user input
             Scanner sc = new Scanner(System.in);
@@ -297,6 +300,30 @@ public class Menu {
                                 break;
                             case 7:
                                 //vAgence.afficheContacts();
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
+                case 7:
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Affecter un employe a une agence");
+                        System.out.println("2. Mutter un employé");
+                        System.out.println("3. Historique des affectations");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vEmpAgence.affecter();
+                                break;
+                            case 2:
+                                System.out.println("Modifier un employé");
+                                break;
+                            case 3:
+
                                 break;
                             default:
                                 System.out.println("Choix invalide");

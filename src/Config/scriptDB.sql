@@ -29,7 +29,7 @@ create table Employe (
 );
 
 CREATE TABLE empagence (
-                           id int ,
+                           id int serial primary key,
                            agence_code int,
                            emp_mat VARCHAR(255),
                            primary key (id,Emp_mat,agence_code),
@@ -87,3 +87,5 @@ create table affectation(
                             foreign key (codeMission) references Mission(code) on delete cascade on update cascade
 );
 
+ALTER TABLE empagence
+    ADD date_affectation DATE DEFAULT CURRENT_DATE ;
