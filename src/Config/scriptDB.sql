@@ -92,3 +92,14 @@ ALTER TABLE empagence
 
 ALTER TABLE compte
     ALTER COLUMN dateCreation SET DEFAULT CURRENT_DATE;
+
+
+CREATE TABLE transactions (
+                              numero serial PRIMARY KEY,
+                              montant FLOAT,
+                              source_id VARCHAR(255),
+                              destinatair_id VARCHAR(255),
+                              date DATE default CURRENT_DATE,
+                              FOREIGN KEY (source_id) REFERENCES compte(code),
+                              FOREIGN KEY (destinatair_id) REFERENCES compte(code)
+);

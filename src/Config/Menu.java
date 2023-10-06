@@ -14,6 +14,7 @@ public class Menu {
     VAgence vAgence =new VAgence();
 
     VEmpAgence vEmpAgence =new VEmpAgence();
+    VTransfert vTransfert =new VTransfert();
     public void menu(){
         boolean quitter=false;
         System.out.printf("Welcome to EasyBank!");
@@ -26,7 +27,8 @@ public class Menu {
             System.out.println("5. Administration des missions");
             System.out.println("6. Administration des agence");
             System.out.println("7. Administration des agence employes");
-            System.out.println("8. Quitter");
+            System.out.println("8. Administration des transferts");
+            System.out.println("9. Quitter");
             System.out.println("Votre choix: ");
             //get the user input
             Scanner sc = new Scanner(System.in);
@@ -318,6 +320,30 @@ public class Menu {
                         switch (choice1) {
                             case 1:
                                 vEmpAgence.affecter();
+                                break;
+                            case 2:
+                                System.out.println("Modifier un employé");
+                                break;
+                            case 3:
+                                vEmpAgence.statistique();
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
+                case 8:
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Affecter une transaction");
+                        System.out.println("2. supprimer une transaction");
+                        System.out.println("3. Afficher la liste des transactions");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vTransfert.ajouter();
                                 break;
                             case 2:
                                 System.out.println("Modifier un employé");
