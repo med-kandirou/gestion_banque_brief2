@@ -1,9 +1,7 @@
-package services;
+package view;
 
-import DAO.ImpEmploye;
 import DAO.Impclient;
 import DTO.Client;
-import DTO.Employe;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +9,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SClient {
+public class VClient {
     Impclient impclient= new Impclient();
     Client client;
     Scanner sc = new Scanner(System.in);

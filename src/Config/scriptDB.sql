@@ -1,10 +1,6 @@
 create database EasyBank;
 
 \c EasyBank;
--- create enum
-create type etat as enum ('active','desactive');
-create type typeOp as enum ('versement','retrait');
-
 create table client (
                         code varchar(20) primary key ,
                         nom varchar(50) not null,
@@ -13,6 +9,14 @@ create table client (
                         telephone varchar(50) not null,
                         adresse varchar(50) not null
 );
+
+CREATE TABLE agence (
+                        code serial primary key,
+                        nom VARCHAR(255),
+                        adresse VARCHAR(255),
+                        telephone VARCHAR(20)
+);
+
 
 create table Employe (
                          matricule varchar(20) primary key,
@@ -24,26 +28,37 @@ create table Employe (
                          adresseEmail varchar(50) not null
 );
 
+CREATE TABLE empagence (
+                           id int ,
+                           agence_code int,
+                           emp_mat VARCHAR(255),
+                           primary key (id,Emp_mat,agence_code),
+                           foreign key (Emp_mat) references Employe(matricule) on delete cascade on update cascade,
+                           foreign key (agence_code) references agence(code) on delete cascade on update cascade
+);
+
+
 create table compte(
-                code varchar(20) primary key,
-                solde float not null,
-                dateCreation date not null ,
-                etat etat not null,
-                client_id varchar(20) not null,
-                Emp_mat varchar(20) not null,
-                foreign key (client_id) references client(code) on delete cascade on update cascade,
-                foreign key (Emp_mat) references employe(matricule) on delete cascade on update cascade)
-;
+                       code varchar(20) primary key,
+                       solde float not null,
+                       dateCreation date not null ,
+                       etat varchar(20) not null,
+                       client_id varchar(20) not null,
+                       Emp_mat varchar(20) not null,
+                       agence_code VARCHAR(20),
+                       foreign key (client_id) references client(code) on delete cascade on update cascade,
+                       foreign key (Emp_mat) references employe(matricule) on delete cascade on update cascade,
+                       foreign key (agence_code) references agence(code) on delete cascade on update cascade);
 
 create table CompteCourant (
-                code varchar(20) primary key,
-                decouvert float not null,
-                foreign key (code) references Compte(code) on delete cascade on update cascade
+                               code varchar(20) primary key,
+                               decouvert float not null,
+                               foreign key (code) references Compte(code) on delete cascade on update cascade
 );
 create table CompteEpargne (
-                code varchar(20) primary key,
-                taux float not null,
-                foreign key (code) references Compte(code) on delete cascade on update cascade
+                               code varchar(20) primary key,
+                               taux float not null,
+                               foreign key (code) references Compte(code) on delete cascade on update cascade
 );
 
 create table Mission (
@@ -55,7 +70,7 @@ create table Operation (
                            numero serial primary key,
                            dateOperation date not null,
                            montant float not null,
-                           type typeOp not null,
+                           typeOp varchar(20) not null,
                            compte_id varchar(20) not null,
                            Emp_mat varchar(20) not null,
                            FOREIGN KEY (Emp_mat) REFERENCES Employe(matricule) ON DELETE CASCADE ON UPDATE CASCADE,

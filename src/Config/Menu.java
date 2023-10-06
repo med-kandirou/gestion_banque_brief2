@@ -1,17 +1,17 @@
 package Config;
 
-import DTO.Employe;
-import services.*;
+import view.*;
 
 import java.util.Scanner;
 
 public class Menu {
-    SEmploye semploye= new SEmploye();
-    SClient sclient= new SClient();
-    Smission smission=new Smission();
-    SCompte scompte=new SCompte();
-    SAffectation saffectation=new SAffectation();
-    SOperation soperation=new SOperation();
+    VEmploye vEmploye = new VEmploye();
+    VClient vClient = new VClient();
+    VMission vMission =new VMission();
+    VCompte vCompte =new VCompte();
+    VAffectation vAffectation =new VAffectation();
+    VOperation vOperation =new VOperation();
+    VAgence vAgence =new VAgence();
     public void menu(){
         boolean quitter=false;
         System.out.printf("Welcome to EasyBank!");
@@ -22,7 +22,8 @@ public class Menu {
             System.out.println("3. Administration des comptes");
             System.out.println("4. Administration des Opérations");
             System.out.println("5. Administration des missions");
-            System.out.println("6. Quitter");
+            System.out.println("6. Administration des agence");
+            System.out.println("7. Quitter");
             System.out.println("Votre choix: ");
             //get the user input
             Scanner sc = new Scanner(System.in);
@@ -43,22 +44,22 @@ public class Menu {
                         int choice1 = sc1.nextInt();
                         switch (choice1) {
                             case 1:
-                                semploye.ajouterEmploye();
+                                vEmploye.ajouterEmploye();
                                 break;
                             case 2:
                                 System.out.println("Modifier un employé");
                                 break;
                             case 3:
-                                semploye.supprierEmploye();
+                                vEmploye.supprierEmploye();
                                 break;
                             case 4:
-                                semploye.afficherListe();
+                                vEmploye.afficherListe();
                                 break;
                             case 5:
-                                semploye.chercherEmploye();
+                                vEmploye.chercherEmploye();
                                 break;
                             case 6:
-                                semploye.chercherParAtt();
+                                vEmploye.chercherParAtt();
                                 break;
                             case 7:
                                 System.out.println("Retour");
@@ -88,22 +89,22 @@ public class Menu {
                         int choice2 = sc2.nextInt();
                         switch (choice2) {
                             case 1:
-                                sclient.ajouterClient();
+                                vClient.ajouterClient();
                                 break;
                             case 2:
                                 System.out.println("Modifier un client");
                                 break;
                             case 3:
-                                sclient.supprierClient();
+                                vClient.supprierClient();
                                 break;
                             case 4:
-                                sclient.afficherListe();
+                                vClient.afficherListe();
                                 break;
                             case 5:
-                                sclient.chercherClientParCode();
+                                vClient.chercherClientParCode();
                                 break;
                             case 6:
-                                sclient.chercherParAtt();
+                                vClient.chercherParAtt();
                                 break;
                             case 7:
                                 System.out.println("Retour");
@@ -139,7 +140,7 @@ public class Menu {
                                 System.out.println("1-Courant\n2-Epargne");
                                 System.out.println("choix");
                                 int choix = sc.nextInt();
-                                scompte.ajouterCompte(choix);
+                                vCompte.ajouterCompte(choix);
                                 break;
                             case 2:
                                 System.out.println("Modifier un compte");
@@ -148,19 +149,19 @@ public class Menu {
                                 System.out.println("Changement de statut");
                                 break;
                             case 4:
-                                scompte.supprierCompte();
+                                vCompte.supprierCompte();
                                 break;
                             case 5:
-                                scompte.afficherList();
+                                vCompte.afficherList();
                                 break;
                             case 6:
-                                scompte.afficherParStatut();
+                                vCompte.afficherParStatut();
                                 break;
                             case 7:
-                                scompte.afficherPardateCreation();
+                                vCompte.afficherPardateCreation();
                                 break;
                             case 8:
-                                scompte.rechercheCompteParClient();
+                                vCompte.rechercheCompteParClient();
                                 break;
                             case 9:
                                 System.out.println("Chercher un compte par numéro d'opération");
@@ -191,13 +192,13 @@ public class Menu {
                         int choice4 = sc4.nextInt();
                         switch (choice4) {
                             case 1:
-                                soperation.ajouterOperation();
+                                vOperation.ajouterOperation();
                                 break;
                             case 2:
-                                soperation.supprierEmploye();
+                                vOperation.supprierEmploye();
                                 break;
                             case 3:
-                                soperation.chercherbyNum();
+                                vOperation.chercherbyNum();
                                 break;
                             case 4:
                                 System.out.println("Retour");
@@ -229,25 +230,25 @@ public class Menu {
                         int choice5 = sc5.nextInt();
                         switch (choice5) {
                             case 1:
-                                smission.ajouterMission();
+                                vMission.ajouterMission();
                                 break;
                             case 2:
-                                smission.supprimerMission();
+                                vMission.supprimerMission();
                                 break;
                             case 3:
-                                smission.afficherListe();
+                                vMission.afficherListe();
                                 break;
                             case 4:
-                                saffectation.ajouterMission();
+                                vAffectation.ajouterMission();
                                 break;
                             case 5:
-                                saffectation.supprimerMission();
+                                vAffectation.supprimerMission();
                                 break;
                             case 6:
-                                saffectation.Historique();
+                                vAffectation.Historique();
                                 break;
                             case 7:
-                                saffectation.statistique();
+                                vAffectation.statistique();
                                 break;
                             case 8:
                                 System.out.println("Retour");
@@ -262,13 +263,46 @@ public class Menu {
                     }
                     break;
                 case 6:
-                    System.out.println("Quitter");
-                    quitter=true;
-                    break;
-                default:
-
-                    System.out.println("Choix invalide");
-                    break;
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Ajouter une Agence");
+                        System.out.println("2. Modifier un employé");
+                        System.out.println("3. Supprimer unae agence");
+                        System.out.println("4. Chercher une agence par code");
+                        System.out.println("5. Chercher une agence par adresse");
+                        System.out.println("6. afficher la liste des contact");
+                        System.out.println("7. afficher la liste des contact");
+                        System.out.println("8. chercher une agence par employe");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vAgence.ajouter();
+                                break;
+                            case 2:
+                                System.out.println("Modifier un employé");
+                                break;
+                            case 3:
+                                vAgence.supprimer();
+                                break;
+                            case 4:
+                                vAgence.rechercherParCode();
+                                break;
+                            case 5:
+                                vEmploye.chercherEmploye();
+                                break;
+                            case 6:
+                                vEmploye.chercherParAtt();
+                                break;
+                            case 7:
+                                System.out.println("Retour");
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
             }
         }while (quitter==false);
     }
