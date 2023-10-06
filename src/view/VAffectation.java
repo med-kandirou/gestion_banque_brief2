@@ -1,7 +1,6 @@
-package services;
+package view;
 
 import DAO.ImpAffectation;
-import DAO.ImpMission;
 import DTO.Affectation;
 import DTO.Employe;
 import DTO.Mission;
@@ -9,7 +8,7 @@ import DTO.Mission;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SAffectation {
+public class VAffectation {
     ImpAffectation impAffectation= new ImpAffectation();
     Scanner sc = new Scanner(System.in);
     Affectation affectation;

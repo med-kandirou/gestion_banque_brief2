@@ -1,19 +1,15 @@
-package services;
+package view;
 
 import DAO.ImpEmploye;
-import DTO.Client;
 import DTO.Employe;
-import DTO.Personne;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SEmploye {
+public class VEmploye {
 
     ImpEmploye impEmploye= new ImpEmploye();
     Employe emp;

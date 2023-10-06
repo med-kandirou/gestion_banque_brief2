@@ -1,6 +1,5 @@
-package services;
+package view;
 
-import DAO.ImpMission;
 import DAO.ImpOperation;
 import DTO.*;
 import Enums.Type;
@@ -8,7 +7,7 @@ import Enums.Type;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SOperation {
+public class VOperation {
     ImpOperation impOperation= new ImpOperation();
     Scanner sc = new Scanner(System.in);
     Operation operation;

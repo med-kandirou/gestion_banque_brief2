@@ -1,17 +1,12 @@
-package services;
+package view;
 
 import DAO.ImpMission;
-import DAO.Impclient;
-import DTO.Client;
 import DTO.Mission;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class Smission {
+public class VMission {
     ImpMission impMission= new ImpMission();
     Scanner sc = new Scanner(System.in);
     Mission mission;

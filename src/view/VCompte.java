@@ -1,18 +1,16 @@
-package services;
+package view;
 
 import DAO.ImpCompte;
-import DAO.ImpMission;
 import DTO.*;
 import Enums.Etat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class SCompte {
+public class VCompte {
     ImpCompte impCompte= new ImpCompte();
     Scanner sc = new Scanner(System.in);
     Compte compte;
