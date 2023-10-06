@@ -323,7 +323,7 @@ public class Menu {
                                 System.out.println("Modifier un employé");
                                 break;
                             case 3:
-
+                                vEmpAgence.statistique();
                                 break;
                             default:
                                 System.out.println("Choix invalide");

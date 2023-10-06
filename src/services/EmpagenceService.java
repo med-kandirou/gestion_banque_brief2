@@ -4,6 +4,7 @@ import DAO.ImpEmpagence;
 import DTO.Agence;
 import DTO.Empagence;
 
+import java.util.List;
 import java.util.Optional;
 
 public class EmpagenceService {
@@ -20,5 +21,10 @@ public class EmpagenceService {
         } else {
             return false;
         }
+    }
+
+    public List<Empagence> statistique() {
+        List<Empagence> stats = impEmpagence.statistique();
+        return stats;
     }
 }

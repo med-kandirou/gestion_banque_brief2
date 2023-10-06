@@ -7,6 +7,7 @@ import DTO.Employe;
 import lombok.NonNull;
 import services.EmpagenceService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class VEmpAgence {
@@ -30,5 +31,12 @@ public class VEmpAgence {
         }else{
             System.out.printf("ERROR EST PRODUIT \n");
         }
+    }
+
+    public void statistique(){
+        List<Empagence> stats= empagenceService.statistique();
+        stats.forEach(val->{
+            System.out.printf(val.getEmploye().getNom()+" "+val.getEmploye().getPrenom()+" "+val.getAgence().getNom()+" "+val.getAgence().getAdresse()+" "+val.getAgence().getTelephone()+" "+val.getDatechangement()+"\n");
+        });
     }
 }
