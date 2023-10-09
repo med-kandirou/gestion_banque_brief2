@@ -3,6 +3,7 @@ package DTO;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,5 +14,5 @@ public class Transfert {
     @NonNull private Compte sourceId;
     @NonNull private Compte destinataireId;
     @NonNull private double montant;
-    private LocalDate date;
+    private LocalDateTime date;
 }

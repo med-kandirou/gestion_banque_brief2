@@ -3,6 +3,9 @@ package services;
 import DAO.ImpTransfert;
 import DTO.Transfert;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 public class TransfertService {
@@ -26,5 +29,11 @@ public class TransfertService {
             return true;
         }
         return false;
+    }
+
+    public List<Transfert> trasactParDate(LocalDateTime date){
+        System.out.printf("entrer une date : ");
+        List<Transfert> trs= imptransfert.trasactParDate(date);
+        return trs;
     }
 }

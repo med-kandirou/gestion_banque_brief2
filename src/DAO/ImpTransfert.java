@@ -1,12 +1,18 @@
 package DAO;
 
 import Config.Database;
+import DTO.Agence;
+import DTO.Compte;
 import DTO.Transfert;
 import Interfaces.ITransfert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ImpTransfert implements ITransfert {
@@ -48,5 +54,34 @@ public class ImpTransfert implements ITransfert {
             System.out.print(e.getMessage());
         }
         return 0;
+    }
+
+    @Override
+    public List<Transfert> trasactParDate(LocalDateTime date) {
+        List<Transfert> transferts = new ArrayList<>();
+        try {
+            String selectSql = "SELECT * FROM transactions WHERE date = '" + date + "'";
+            PreparedStatement preparedStatement = cnx.prepareStatement(selectSql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Transfert transfert = new Transfert();
+                transfert.setMontant(resultSet.getInt("montant"));
+                Compte dest= new Compte();
+                dest.setCode(resultSet.getString("destinatair_id"));
+                transfert.setDestinataireId(dest);
+                Compte source= new Compte();
+                source.setCode(resultSet.getString("source_id"));
+                transfert.setDestinataireId(dest);
+                transfert.setSourceId(source);
+                transferts.add(transfert);
+            }
+            resultSet.close();
+            preparedStatement.close();
+            return transferts;
+        }
+        catch (SQLException e){
+            System.out.print(e.getMessage());
+        }
+        return transferts;
     }
 }

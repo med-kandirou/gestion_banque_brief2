@@ -7,6 +7,9 @@ import DTO.Mission;
 import DTO.Transfert;
 import services.TransfertService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -44,5 +47,13 @@ public class VTransfert {
         else {
             System.out.printf("CETTE TRANSFERT AVEC CE CODE N'EXISTE PAS \n");
         }
+    }
+    public void trasactParDate(){
+        System.out.print("DATE :");
+        LocalDateTime dt= LocalDateTime.parse(sc.nextLine());
+        List<Transfert> list= service.trasactParDate(dt);
+        list.forEach(item -> {
+            System.out.println("NUMERO : " + item.getNumero() + " Source : " + item.getSourceId().getCode() + " Destinataire : " + item.getDestinataireId().getCode() + " Montant " + item.getMontant());
+        });
     }
 }

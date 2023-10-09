@@ -103,3 +103,14 @@ CREATE TABLE transactions (
                               FOREIGN KEY (source_id) REFERENCES compte(code),
                               FOREIGN KEY (destinatair_id) REFERENCES compte(code)
 );
+
+CREATE TABLE demandeCredit (
+                               numero serial primary key ,
+                               date DATE default current_date,
+                               etat VARCHAR(255),
+                               montant float,
+                               duree INT,
+                               remarques VARCHAR(255),
+                               Client_code varchar(50),
+                               FOREIGN KEY (Client_code) REFERENCES client(code)
+);
