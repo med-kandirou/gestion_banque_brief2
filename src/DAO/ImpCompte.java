@@ -43,13 +43,14 @@ public class ImpCompte implements ICompte {
     @Override
     public Optional<Compte> ajouterepargne(CompteEpargne c) {
         try {
-            String insertCompteSql = "INSERT INTO compte (code, solde, etat, client_id, Emp_mat) VALUES (?, ?, ?, ?, ?)";
+            String insertCompteSql = "INSERT INTO compte (code, solde, etat, client_id, Emp_mat,agonce_code) VALUES (?, ?, ?, ?, ?,?)";
             PreparedStatement preparedStatement = cnx.prepareStatement(insertCompteSql);
             preparedStatement.setString(1, c.getCode());
             preparedStatement.setDouble(2, c.getSolde());
             preparedStatement.setString(3, c.getEtat().toString());
             preparedStatement.setString(4, c.getClient().getCode());
             preparedStatement.setString(5, c.getEmploye().getMatricule());
+            preparedStatement.setInt(5, c.getAgence().getCode());
             int rowsAffected = preparedStatement.executeUpdate();
             preparedStatement.close();
             if (rowsAffected > 0) {

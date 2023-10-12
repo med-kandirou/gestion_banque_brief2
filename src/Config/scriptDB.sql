@@ -29,7 +29,7 @@ create table Employe (
 );
 
 CREATE TABLE empagence (
-                           id int ,
+                           id int serial primary key,
                            agence_code int,
                            emp_mat VARCHAR(255),
                            primary key (id,Emp_mat,agence_code),
@@ -87,3 +87,30 @@ create table affectation(
                             foreign key (codeMission) references Mission(code) on delete cascade on update cascade
 );
 
+ALTER TABLE empagence
+    ADD date_affectation DATE DEFAULT CURRENT_DATE ;
+
+ALTER TABLE compte
+    ALTER COLUMN dateCreation SET DEFAULT CURRENT_DATE;
+
+
+CREATE TABLE transactions (
+                              numero serial PRIMARY KEY,
+                              montant FLOAT,
+                              source_id VARCHAR(255),
+                              destinatair_id VARCHAR(255),
+                              date DATE default CURRENT_DATE,
+                              FOREIGN KEY (source_id) REFERENCES compte(code),
+                              FOREIGN KEY (destinatair_id) REFERENCES compte(code)
+);
+
+CREATE TABLE demandeCredit (
+                               numero serial primary key ,
+                               date DATE default current_date,
+                               etat VARCHAR(255),
+                               montant float,
+                               duree INT,
+                               remarques VARCHAR(255),
+                               Client_code varchar(50),
+                               FOREIGN KEY (Client_code) REFERENCES client(code)
+);

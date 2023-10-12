@@ -1,5 +1,6 @@
 package Config;
 
+import DTO.Simulation;
 import view.*;
 
 import java.util.Scanner;
@@ -12,6 +13,9 @@ public class Menu {
     VAffectation vAffectation =new VAffectation();
     VOperation vOperation =new VOperation();
     VAgence vAgence =new VAgence();
+    VEmpAgence vEmpAgence =new VEmpAgence();
+    VTransfert vTransfert =new VTransfert();
+    VSimulation vSimulation =new VSimulation();
     public void menu(){
         boolean quitter=false;
         System.out.printf("Welcome to EasyBank!");
@@ -23,7 +27,10 @@ public class Menu {
             System.out.println("4. Administration des Opérations");
             System.out.println("5. Administration des missions");
             System.out.println("6. Administration des agence");
-            System.out.println("7. Quitter");
+            System.out.println("7. Administration des agence employes");
+            System.out.println("8. Administration des transferts");
+            System.out.println("9 Administration des demande de credit");
+            System.out.println("9. Quitter");
             System.out.println("Votre choix: ");
             //get the user input
             Scanner sc = new Scanner(System.in);
@@ -281,7 +288,7 @@ public class Menu {
                                 vAgence.ajouter();
                                 break;
                             case 2:
-                                System.out.println("Modifier un employé");
+                                vAgence.update();
                                 break;
                             case 3:
                                 vAgence.supprimer();
@@ -293,10 +300,82 @@ public class Menu {
                                 vAgence.rechercherParAdresse();
                                 break;
                             case 6:
-                                vEmploye.chercherParAtt();
+                                vAgence.afficheContacts();
                                 break;
                             case 7:
-                                System.out.println("Retour");
+                                //vAgence.afficheContacts();
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
+                case 7:
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Affecter un employe a une agence");
+                        System.out.println("2. Mutter un employé");
+                        System.out.println("3. Historique des affectations");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vEmpAgence.affecter();
+                                break;
+                            case 2:
+                                System.out.println("Modifier un employé");
+                                break;
+                            case 3:
+                                vEmpAgence.statistique();
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
+                case 8:
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Ajouter une transaction");
+                        System.out.println("2. supprimer une transaction");
+                        System.out.println("3. Afficher la liste des transactions");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vTransfert.ajouter();
+                                break;
+                            case 2:
+                                vTransfert.supprimer();
+                                break;
+                            case 3:
+                                vTransfert.trasactParDate();
+                                break;
+                            default:
+                                System.out.println("Choix invalide");
+                                break;
+                        }
+                    }
+                case 9:
+                    while (true) {
+                        System.out.println("Veuillez choisir une option: ");
+                        System.out.println("1. Creer une simulation");
+                        System.out.println("2. Creer une transaction");
+                        System.out.println("3. Afficher la liste des transactions");
+                        System.out.println("Votre choix: ");
+                        Scanner sc1 = new Scanner(System.in);
+                        int choice1 = sc1.nextInt();
+                        switch (choice1) {
+                            case 1:
+                                vSimulation.simuler();
+                                break;
+                            case 2:
+                                vTransfert.supprimer();
+                                break;
+                            case 3:
+                                vTransfert.trasactParDate();
                                 break;
                             default:
                                 System.out.println("Choix invalide");

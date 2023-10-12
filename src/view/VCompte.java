@@ -38,6 +38,9 @@ public class VCompte {
         System.out.print("Entrer le code du employe  :");
         Employe emp= new Employe();
         emp.setMatricule(sc.next());
+        System.out.print("Entrer le code d'agence  :");
+        Agence agence= new Agence();
+        agence.setCode(sc.nextInt());
         compte.setEmploye(emp);
         if(choix==1){
             System.out.print("Entrer le decouvert autorise  :");
