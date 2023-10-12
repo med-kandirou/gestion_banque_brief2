@@ -40,6 +40,15 @@ public class AgenceService {
         }
     }
 
+    public Optional<Agence> rechercheParAdresse(String adresse){
+        Optional<Agence> optagence=impAgence.cherchebyAdresse(adresse);
+        if(optagence.isPresent()){
+            return optagence;
+        }else {
+            return Optional.empty();
+        }
+    }
+
 
 
 }
